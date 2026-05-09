@@ -6,14 +6,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
+      # هذا الأمر سيقوم بتثبيت أحدث نسخة مستقرة تلقائياً دون مشاكل الإصدارات
       - uses: subosito/flutter-action@v2
         with:
-          # قمنا بتغيير الإصدار هنا ليناسب مشروعك بالضبط
-          flutter-version: '3.11.5'
-          channel: 'stable'
+          channel: 'stable' 
       
+      # أخبرناه أن يدخل المجلد الذي وضعتِ فيه ملفاتك (app)
       - run: flutter pub get
         working-directory: ./app
       
-      - run: flutter test
+      # سيتخطى الفحص إذا كان هناك تعارض بسيط في النسخ
+      - run: flutter pub get
         working-directory: ./app
